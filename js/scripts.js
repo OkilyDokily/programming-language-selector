@@ -78,7 +78,7 @@ $(document).ready(function(){
       getIds.push(id);
     })
     assignScores(getIds);
-    
+    var results = rankLanguages();
 
   });
 });

@@ -23,3 +23,11 @@ label{
   margin-bottom: 2px;
 }
 
+div.container{
+  background-color: beige;
+
+}
+
+div.well{
+  background-color: bisque;
+}

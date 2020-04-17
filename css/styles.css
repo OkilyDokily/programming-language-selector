@@ -4,3 +4,9 @@ img {
   border: green solid 2px;
   border-radius: 3%;
 }
+
+div.results{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 20px;
+}

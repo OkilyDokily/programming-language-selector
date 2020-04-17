@@ -1,4 +1,6 @@
 img {
   width: 100px;
   height: auto;
+  border: green solid 2px;
+  border-radius: 3%;
 }

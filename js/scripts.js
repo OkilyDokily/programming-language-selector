@@ -69,7 +69,14 @@ function rankLanguages(){
 
 
 $(document).ready(function(){
-
+  var imgObj = {
+    "csharp":"csharp.png",
+    "haskell":"haskell.jpg",
+    "java":"java.png",
+    "lisp":"lisp.png",
+    "python":"python.jpg",
+    "ruby":"ruby.png"
+  }
   $("form").submit(function(e){
     e.preventDefault();
     var getIds = [];
@@ -79,6 +86,16 @@ $(document).ready(function(){
     })
     assignScores(getIds);
     var results = rankLanguages();
+    
+    for(var i = 0; i < results.length; i++){
+      var keys = Object.keys(results[i]);
+      var key = keys[0];
+      var imgString = imgObj[key];
+      console.log(imgString);
+      $(".result").append("<div>" +
+      
+      "<img src=" + "'" + imgString +  "'" + "></div>")
+    }
 
   });
 });

@@ -61,6 +61,13 @@ function rankLanguages(){
   return rankedLanguages;  
 }
 
+function resetValues(){
+  var languagesArray = Object.keys(Scores);
+  languagesArray.forEach(function(language){
+    Scores[language] = 0;
+  });
+}
+
 
 
 $(document).ready(function(){
@@ -74,6 +81,8 @@ $(document).ready(function(){
   }
   $("form").submit(function(e){
     e.preventDefault();
+    resetValues();
+    hide();
     var getIds = [];
     $("input:checked").each(function(item){
       var id  = $(this).attr("id")

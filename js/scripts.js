@@ -104,6 +104,10 @@ $(document).ready(function(){
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
     }
 
+    function hide(){
+      $(".results div").remove();
+    }
+
   });
 });
 

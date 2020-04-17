@@ -37,3 +37,7 @@ div.container{
 div.well{
   background-color: bisque;
 }
+
+form {
+  margin: 15px;
+}

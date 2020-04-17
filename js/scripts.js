@@ -84,6 +84,7 @@ $(document).ready(function(){
       var id  = $(this).attr("id")
       getIds.push(id);
     })
+    
     assignScores(getIds);
     var results = rankLanguages();
     
@@ -93,7 +94,7 @@ $(document).ready(function(){
       var imgString = imgObj[key];
       console.log(imgString);
       $(".results").append("<div>" +
-      
+      "<p>" + key +"</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
     }
 

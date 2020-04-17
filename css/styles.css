@@ -9,4 +9,9 @@ div.results{
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-gap: 20px;
+
+}
+
+label{
+  display:block;
 }

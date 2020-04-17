@@ -1,9 +1,13 @@
+body {
+  background-color: lightcyan;
+}
+
 img {
   width: 100px;
   height: auto;
-  border: green solid 2px;
+  border: yellow solid 2px;
   border-radius: 3%;
-  box-shadow: 5px 5px 2px green;
+  box-shadow: 5px 5px 2px orange;
 }
 
 
@@ -24,6 +28,8 @@ label{
 }
 
 div.container{
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: beige;
 
 }

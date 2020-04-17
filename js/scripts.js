@@ -92,7 +92,11 @@ $(document).ready(function(){
       var keys = Object.keys(results[i]);
       var key = keys[0];
       var imgString = imgObj[key];
-      console.log(imgString);
+      
+      var percentage = results[i][key]/programmingLanguages[key].length;
+
+      console.log(percentage);
+
       $(".results").append("<div>" +
       "<p>" + key +"</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")

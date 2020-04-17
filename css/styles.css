@@ -3,7 +3,9 @@ img {
   height: auto;
   border: green solid 2px;
   border-radius: 3%;
+  box-shadow: 5px 5px 2px green;
 }
+
 
 div.results{
   display: grid;

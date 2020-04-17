@@ -92,9 +92,9 @@ $(document).ready(function(){
       var key = keys[0];
       var imgString = imgObj[key];
       console.log(imgString);
-      $(".result").append("<div>" +
+      $(".results").append("<div>" +
       
-      "<img src=" + "'" + imgString +  "'" + "></div>")
+      "<img src=" + "'img/" + imgString +  "'" + "></div>")
     }
 
   });

@@ -1,3 +1,4 @@
+//business logic
 var programmingLanguages =
 {
   "csharp": [["webdeveloper","business","games"],"park","changeplan", "western","pragmatic"],
@@ -8,11 +9,6 @@ var programmingLanguages =
   "ruby":["webdeveloper","coffee","noplan",["sciencefiction","drama"],"funseeking"]
 }
 
-// var answerToLanguage = {
-//   "webdeveloper":["csharp","java","python","ruby"]
-
-// }
-
 var Scores ={
 "csharp": 0,
 "haskell": 0,
@@ -21,7 +17,6 @@ var Scores ={
 "python": 0,
 "ruby": 0
 }
-
 
 function assignScores(answers){
   var programmingLanguagesArray = Object.keys(programmingLanguages);
@@ -94,10 +89,6 @@ $(document).ready(function(){
       var imgString = imgObj[key];
       
       var percentage = ((results[i][key]/programmingLanguages[key].length) * 100).toFixed(2);
-
-
-
-      console.log(percentage);
 
       $(".results").append("<div>" +
       "<p>" + key + ": " + percentage + "%" + "</p>" +

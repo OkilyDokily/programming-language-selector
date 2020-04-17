@@ -93,12 +93,14 @@ $(document).ready(function(){
       var key = keys[0];
       var imgString = imgObj[key];
       
-      var percentage = results[i][key]/programmingLanguages[key].length;
+      var percentage = ((results[i][key]/programmingLanguages[key].length) * 100).toFixed(2);
+
+
 
       console.log(percentage);
 
       $(".results").append("<div>" +
-      "<p>" + key +"</p>" +
+      "<p>" + key + ": " + percentage + "%" + "</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
     }
 

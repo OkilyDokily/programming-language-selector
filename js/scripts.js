@@ -112,6 +112,12 @@ $(document).ready(function(){
     }
 
   });
+
+  $("div.result-explainer-exit").click(function(e){
+    $("form").show();
+    $("div.results-explainer").hide();
+    $("div.results").hide();
+  })
 });
 
 

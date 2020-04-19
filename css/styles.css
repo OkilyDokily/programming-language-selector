@@ -44,19 +44,18 @@ form {
 }
 
 div.results-explainer{
- 
+ display:none;
 }
 
 div.results-explainer img{
   width: 40px;
   height: auto;
+  margin-left: 5px ;
 }
 
-form {
-  display:none
-}
 
 div.title-image{
   display:flex;
   align-items: center;
 }
+

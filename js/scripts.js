@@ -104,6 +104,9 @@ $(document).ready(function(){
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
     }
 
+    $("form").hide();
+    $("div.results-explainer").show();
+
     function hide(){
       $(".results div").remove();
     }

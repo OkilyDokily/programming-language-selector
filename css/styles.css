@@ -55,3 +55,8 @@ div.results-explainer img{
 form {
   display:none
 }
+
+div.title-image{
+  display:flex;
+  align-items: center;
+}

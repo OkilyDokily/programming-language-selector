@@ -44,5 +44,14 @@ form {
 }
 
 div.results-explainer{
-  display:none;
+ 
+}
+
+div.results-explainer img{
+  width: 40px;
+  height: auto;
+}
+
+form {
+  display:none
 }

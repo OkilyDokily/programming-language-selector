@@ -47,6 +47,7 @@ div.results-explainer{
   margin: 15px;
   display:none;
   border: solid orange 1px;
+  
 }
 
 div.results-explainer img{
@@ -62,8 +63,11 @@ div.title-image{
 }
 
 div.result-explainer-exit{
-  float:right;
+  position: absolute;
+  right:0;
+  top: 0;
   border: .5px black solid;
   line-height: 9px;
+  
 }
 

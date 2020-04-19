@@ -42,3 +42,7 @@ div.well{
 form {
   margin: 15px;
 }
+
+div.results-explainer{
+  display:none;
+}

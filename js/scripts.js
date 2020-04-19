@@ -4,7 +4,7 @@ var programmingLanguages =
   "csharp": [["webdeveloper","business","games"],"park","changeplan", "western","pragmatic"],
   "haskell":[["business","scientific"],"coffee","plan",["sciencefiction","fantasy"],"intellectual"],
   "java":[["webdeveloper", "business"],"park","changeplan",["western", "drama"],"pragmatic"],
-  "lisp":[["business","scientific"],"homebody","noplan",["romance","fantasy"],"intellectual"],
+  "lisp":[["scientific"],"homebody","noplan",["romance","fantasy"],["intellectual","funseeking"]],
   "python":[["webdeveloper","scientific"],"park","noplan",["romance","western"],"funseeking"],
   "ruby":["webdeveloper","coffee","noplan",["sciencefiction","drama"],"funseeking"]
 }

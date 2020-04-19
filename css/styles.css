@@ -46,6 +46,7 @@ form {
 div.results-explainer{
   margin: 15px;
   display:none;
+  border: solid orange 1px;
 }
 
 div.results-explainer img{

@@ -43,11 +43,12 @@ function rankLanguages(){
   var percentageArray = languagesArray.map(function(language){
     return { "language": language, "score" : (Scores[language] / programmingLanguages[language].length)};
   });
+  console.log(percentageArray);
  
   percentageArray.sort(function(a,b){
-    b.score - a.score;
+    return b.score - a.score;
   });
-  
+  console.log(percentageArray);
   return percentageArray;  
 }
 
@@ -83,7 +84,7 @@ $(document).ready(function(){
     var results = rankLanguages();
     
     results.forEach(function(item){
-      percentage = item.score.toFixed(2)
+      percentage = (item.score * 100).toFixed(2)
       imgString = imgObj[item.language];
       $(".results").append("<div>" +
       "<p>" + item.language + ": " + percentage + "%" + "</p>" +

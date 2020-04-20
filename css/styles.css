@@ -44,6 +44,8 @@ form {
 }
 
 div.results-explainer{
+  display:flex;
+  flex-direction: column;
   margin: 15px;
   display:none;
   border: solid orange 1px;

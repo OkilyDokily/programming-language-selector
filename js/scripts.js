@@ -43,12 +43,11 @@ function rankLanguages(){
   var percentageArray = languagesArray.map(function(language){
     return { "language": language, "score" : (Scores[language] / programmingLanguages[language].length)};
   });
-  console.log(percentageArray);
  
   percentageArray.sort(function(a,b){
     return b.score - a.score;
   });
-  console.log(percentageArray);
+ 
   return percentageArray;  
 }
 
@@ -62,6 +61,7 @@ function resetValues(){
 
 
 $(document).ready(function(){
+  var results;
   var imgObj = {
     "csharp":"csharp.png",
     "haskell":"haskell.jpg",
@@ -81,7 +81,7 @@ $(document).ready(function(){
     })
     
     assignScores(getIds);
-    var results = rankLanguages();
+    results = rankLanguages();
     
     results.forEach(function(item){
       percentage = (item.score * 100).toFixed(2)
@@ -92,7 +92,14 @@ $(document).ready(function(){
     });
 
     $("form").hide();
-    $("div.results-explainer").show();
+    var order = 0;
+    results.forEach(function (item){
+      $("." + item.language).css({"order": order++});
+      console.log("."+item.language);
+      console.log(order);
+    });
+
+    $("div.results-explainer").css({"display":"flex"});
 
     function hide(){
       $(".results div").remove();

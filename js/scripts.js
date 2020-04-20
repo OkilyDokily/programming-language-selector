@@ -39,26 +39,16 @@ function assignScores(answers){
 }
 
 function rankLanguages(){
-  var languagesArray = Object.keys(Scores);
-  var scoresArray = languagesArray.map(function(language){
-    return Scores[language];
+  var languagesArray = Object.keys(programmingLanguages);
+  var percentageArray = languagesArray.map(function(language){
+    return { "language": language, "score" : (Scores[language] / programmingLanguages[language].length)};
   });
  
-  var rankedLanguages  = []; 
- 
-  while(scoresArray.length > 0){
-    var highestNumber = Math.max(...scoresArray);
-    languagesArray.forEach(function(language){
-      if(Scores[language] === highestNumber){
-        rankedLanguages.push({[language]:highestNumber});
-      }
-    })
-    
-    scoresArray = scoresArray.filter(function(score){
-      return score != highestNumber;
-    })
-  }
-  return rankedLanguages;  
+  percentageArray.sort(function(a,b){
+    b.score - a.score;
+  });
+  
+  return percentageArray;  
 }
 
 function resetValues(){
@@ -92,17 +82,13 @@ $(document).ready(function(){
     assignScores(getIds);
     var results = rankLanguages();
     
-    for(var i = 0; i < results.length; i++){
-      var keys = Object.keys(results[i]);
-      var key = keys[0];
-      var imgString = imgObj[key];
-      
-      var percentage = ((results[i][key]/programmingLanguages[key].length) * 100).toFixed(2);
-
+    results.forEach(function(item){
+      percentage = item.score.toFixed(2)
+      imgString = imgObj[item.language];
       $(".results").append("<div>" +
-      "<p>" + key + ": " + percentage + "%" + "</p>" +
+      "<p>" + item.language + ": " + percentage + "%" + "</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
-    }
+    });
 
     $("form").hide();
     $("div.results-explainer").show();
@@ -116,7 +102,6 @@ $(document).ready(function(){
   $("div.result-explainer-exit").click(function(e){
     $("form").show();
     $("div.results-explainer").hide();
-    // $("div.results").hide();
   })
 });
 

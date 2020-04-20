@@ -9,49 +9,20 @@ var programmingLanguages =
   "ruby":["webdeveloper","coffee","noplan",["sciencefiction","drama"],"funseeking"]
 }
 
-var Scores ={
-"csharp": 0,
-"haskell": 0,
-"java": 0,
-"lisp": 0,
-"python": 0,
-"ruby": 0
-}
 
-
-
-function assignScores(answers){
-  var programmingLanguagesArray = Object.keys(programmingLanguages);
-  programmingLanguagesArray.forEach(function(language){
-    var programmingFlatten = programmingLanguages[language].flat();
-    var filtered = programmingFlatten.filter(function(item){
-      return answers.includes(item);
-    });
-    Scores[language] = filtered.length / programmingLanguages[language].length;
-  })
-}
-
-function orderLanguages(){
-  var languagesArray = Object.keys(programmingLanguages);
-  var percentageArray = languagesArray.map(function(language){
-    return { "language": language, "score" : Scores[language] };
+function assignAndOrderScores(answers){
+  var scores = Object.keys(programmingLanguages).map(function(language){
+    var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
+    var percentage = length / programmingLanguages[language].length;
+    return {
+      "language": language, "score": percentage
+    }
   });
- 
-  percentageArray.sort(function(a,b){
+  scores.sort(function(a,b){
     return b.score - a.score;
   });
- 
-  return percentageArray;  
-}
-
-
-function resetValues(){
-  var languagesArray = Object.keys(Scores);
-  languagesArray.forEach(function(language){
-    Scores[language] = 0;
-  });
-}
-
+  return scores;
+};
 
 
 $(document).ready(function(){
@@ -66,7 +37,7 @@ $(document).ready(function(){
   }
   $("form").submit(function(e){
     e.preventDefault();
-    resetValues();
+    
     hide();
     var getIds = [];
     $("input:checked").each(function(item){
@@ -74,8 +45,8 @@ $(document).ready(function(){
       getIds.push(id);
     })
     
-    assignScores(getIds);
-    results = orderLanguages();
+    
+    results = assignAndOrderScores();
     
     results.forEach(function(item){
       percentage = (item.score * 100).toFixed(2)

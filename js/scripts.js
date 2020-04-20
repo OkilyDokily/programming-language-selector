@@ -95,6 +95,8 @@ $(document).ready(function(){
     var order = 0;
     results.forEach(function (item){
       $("." + item.language).css({"order": order++});
+      var h1 = $("." + item.language + " " + "h1").text();
+      $("." + item.language + " " + "h1").text(order + ". "+h1);
       console.log("."+item.language);
       console.log(order);
     });
@@ -105,7 +107,7 @@ $(document).ready(function(){
       $(".results div").remove();
     }
 
-  });
+  }); 
 
   $("div.result-explainer-exit").click(function(e){
     $("form").show();

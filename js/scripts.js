@@ -12,12 +12,15 @@ var programmingLanguages =
 
 function assignAndOrderScores(answers){
   var scores = Object.keys(programmingLanguages).map(function(language){
+    // get the intersection (with .filter()) of the answers list and the list for each programming language. Then obtain the length of that intersection. 
     var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
-    var percentage = length / programmingLanguages[language].length;
+    //in theory not every question applies to every language so use percentages instead of total scores.
+    var percentage = ((length / programmingLanguages[language].length) * 100).toFixed(2);
     return {
-      "language": language, "score": percentage
+      "language": language, "score": percentage 
     }
   });
+  //order the scores 
   scores.sort(function(a,b){
     return b.score - a.score;
   });
@@ -26,7 +29,7 @@ function assignAndOrderScores(answers){
 
 
 $(document).ready(function(){
-  var results;
+  
   var imgObj = {
     "csharp":"csharp.png",
     "haskell":"haskell.jpg",
@@ -39,32 +42,25 @@ $(document).ready(function(){
     e.preventDefault();
     
     hide();
-    var getIds = [];
-    $("input:checked").each(function(item){
-      var id  = $(this).attr("id")
-      getIds.push(id);
-    })
+    var ids = $("input:checked").map(function(item){
+      return this.id;
+    }).get();//.get() returns a normal javascript array rather than a jquery function
     
-    
-    results = assignAndOrderScores(getIds);
-    
-    results.forEach(function(item){
-      percentage = (item.score * 100).toFixed(2)
-      imgString = imgObj[item.language];
+    var results = assignAndOrderScores(ids);
+    //order is for ordering the divs.results-explainer flexbox
+    var order = 0;
+    results.forEach(function(result){
+      imgString = imgObj[result.language];
       $(".results").append("<div>" +
-      "<p>" + item.language + ": " + percentage + "%" + "</p>" +
+      "<p>" + result.language + ": " + result.score + "%" + "</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
+      //order the div.results-explainer flexbox
+      $("." + result.language).css({"order": order++});
+      $("." + result.language + " " + "h1").prepend("<span>(" + order +".) </span>");
     });
 
     $("form").hide();
-    var order = 0;
-    results.forEach(function (item){
-      $("." + item.language).css({"order": order++});
-      $("." + item.language + " " + "h1").prepend("<span>(" + order +".) </span>");
-      console.log("."+item.language);
-      console.log(order);
-    });
-
+    
     $("div.results-explainer").css({"display":"flex"});
 
     function hide(){

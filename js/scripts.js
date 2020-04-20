@@ -27,14 +27,14 @@ function assignScores(answers){
     var filtered = programmingFlatten.filter(function(item){
       return answers.includes(item);
     });
-    Scores[language] = filtered.length;
+    Scores[language] = filtered.length / programmingLanguages[language].length;
   })
 }
 
-function rankLanguages(){
+function orderLanguages(){
   var languagesArray = Object.keys(programmingLanguages);
   var percentageArray = languagesArray.map(function(language){
-    return { "language": language, "score" : (Scores[language] / programmingLanguages[language].length)};
+    return { "language": language, "score" : Scores[language] };
   });
  
   percentageArray.sort(function(a,b){
@@ -43,6 +43,7 @@ function rankLanguages(){
  
   return percentageArray;  
 }
+
 
 function resetValues(){
   var languagesArray = Object.keys(Scores);
@@ -74,7 +75,7 @@ $(document).ready(function(){
     })
     
     assignScores(getIds);
-    results = rankLanguages();
+    results = orderLanguages();
     
     results.forEach(function(item){
       percentage = (item.score * 100).toFixed(2)

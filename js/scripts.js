@@ -69,6 +69,7 @@ $(document).ready(function(){
 
     function hide(){
       $(".results div").remove();
+      $("span").remove();
     }
 
   }); 

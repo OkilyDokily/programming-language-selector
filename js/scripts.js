@@ -21,20 +21,11 @@ var Scores ={
 function assignScores(answers){
   var programmingLanguagesArray = Object.keys(programmingLanguages);
   programmingLanguagesArray.forEach(function(language){
-    programmingLanguages[language].forEach(function(answer){
-      if (Array.isArray(answer)){
-        answer.forEach(function(answer){
-          if (answers.includes(answer)){
-            Scores[language]++;
-          }
-        })
+    programmingLanguages[language].flat().forEach(function(answer){
+      if (answers.includes(answer)){
+        Scores[language]++;
       }
-      else{
-        if (answers.includes(answer)){
-          Scores[language]++;
-        }
-      } 
-    });
+    })
   })
 }
 

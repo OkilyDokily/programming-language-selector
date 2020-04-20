@@ -46,7 +46,7 @@ $(document).ready(function(){
     })
     
     
-    results = assignAndOrderScores();
+    results = assignAndOrderScores(getIds);
     
     results.forEach(function(item){
       percentage = (item.score * 100).toFixed(2)

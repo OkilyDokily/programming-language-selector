@@ -18,14 +18,16 @@ var Scores ={
 "ruby": 0
 }
 
+
+
 function assignScores(answers){
   var programmingLanguagesArray = Object.keys(programmingLanguages);
   programmingLanguagesArray.forEach(function(language){
-    programmingLanguages[language].flat().forEach(function(answer){
-      if (answers.includes(answer)){
-        Scores[language]++;
-      }
-    })
+    var programmingFlatten = programmingLanguages[language].flat();
+    var filtered = programmingFlatten.filter(function(item){
+      return answers.includes(item);
+    });
+    Scores[language] = filtered.length;
   })
 }
 

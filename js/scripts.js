@@ -17,7 +17,7 @@ function assignAndOrderScores(answers){
   var scores = Object.keys(programmingLanguages).map(function(language){
     // get the intersection (with .filter()) of the answers list and the list for each programming language. Then obtain the length of that intersection. 
     var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
-    //in theory not every question applies to every language so use percentages instead of total scores.
+    //in theory not every question applies to every language so use percentages instead of total scores. Also percentages are more meaningful to the user.
     var percentage = ((length / programmingLanguages[language].length) * 100).toFixed(2);
     return {
       "language": language, "score": percentage 
@@ -28,6 +28,8 @@ function assignAndOrderScores(answers){
     return b.score - a.score;
   });
   
+  //get the highest score and an array of the highest score 
+  //which will then be randomized and finally concatenated to the original results
   var highest = scores[0].score;
   var highestScoresArray = scores.filter(function(score){
     return score.score == highest;
@@ -39,21 +41,21 @@ function assignAndOrderScores(answers){
   }
   
   //if there are multiple same highscores then they need to be randomized
-  var newArray = [];
+  var randomizedHighScores = [];
   while (highestScoresArray.length > 0){
     var lengthOfHighestScoreArray = highestScoresArray.length;
     //find a random number between 0 and the length of the high score sarray
     var number = Math.floor(Math.random() * lengthOfHighestScoreArray);
     //use that random number to select a random object from the highest score and then push that object into the scores array;
-    newArray.push(highestScoresArray[number]);
+    randomizedHighScores.push(highestScoresArray[number]);
     //remove the item that was pushed into the new array from the array of highest scores
     highestScoresArray.splice(number,1);
     //continue the process until the high scores array is empty    
   }
   // remove the high scores from the original results array
-  var spliced = scores.splice(0,newArray.length);
+  var spliced = scores.splice(0,randomizedHighScores.length);
   //replace the high scores by contating the original results to the new array
-  return newArray.concat(scores);
+  return randomizedHighScores.concat(scores);
 
   
    
@@ -89,7 +91,6 @@ $(document).ready(function(){
       "<p>" + result.language + ": " + result.score + "%" + "</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
       //order the div.results-explainer flexbox
-      //site must use branching to return the result
       if(order === 0){
         $("."+ result.language).addClass("orange");
       }

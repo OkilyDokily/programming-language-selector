@@ -11,7 +11,11 @@ var programmingLanguages =
 
 
 function assignAndOrderScores(answers){
-  var scores = Object.keys(programmingLanguages).map(function(language){
+   
+  var languages = Object.keys(programmingLanguages)
+  var randomizeLanguages = languages.sort(() => .5 - Math.random());
+  
+  var scores = randomizeLanguages.map(function(language){
     // get the intersection (with .filter()) of the answers list and the list for each programming language. Then obtain the length of that intersection. 
     var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
     //in theory not every question applies to every language so use percentages instead of total scores.
@@ -24,8 +28,10 @@ function assignAndOrderScores(answers){
   scores.sort(function(a,b){
     return b.score - a.score;
   });
+  
   return scores;
-};
+}  
+
 
 
 $(document).ready(function(){
@@ -55,6 +61,10 @@ $(document).ready(function(){
       "<p>" + result.language + ": " + result.score + "%" + "</p>" +
       "<img src=" + "'img/" + imgString +  "'" + "></div>")
       //order the div.results-explainer flexbox
+      //site must use branching to return the result
+      if(order === 0){
+        $("."+ result.language).addClass("orange");
+      }
       $("." + result.language).css({"order": order++});
       $("." + result.language + " " + "h1").prepend("<span>(" + order +".) </span>");
     });
@@ -66,6 +76,7 @@ $(document).ready(function(){
     function hide(){
       $(".results div").remove();
       $("span").remove();
+      $(".orange").removeClass("orange");
     }
 
   }); 

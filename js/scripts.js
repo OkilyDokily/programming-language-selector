@@ -54,7 +54,7 @@ function assignAndOrderScores(answers){
   }
   // remove the high scores from the original results array
   var spliced = scores.splice(0,randomizedHighScores.length);
-  //replace the high scores by contating the original results to the new array
+  //replace the high scores by concatenating the original results to the new array
   return randomizedHighScores.concat(scores);
 
   

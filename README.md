@@ -7,7 +7,7 @@
 ## Description
 
 _A page which demonstrates beginner JavaScript with an instance of branching ._
-_Picks a language for based on quiz answers and randomizes the top results._
+_Picks a language for the user based on quiz answers and randomizes the top results._
 
 ## Setup/Installation Requirements
 

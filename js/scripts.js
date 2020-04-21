@@ -12,10 +12,9 @@ var programmingLanguages =
 
 function assignAndOrderScores(answers){
    
-  var languages = Object.keys(programmingLanguages)
-  var randomizeLanguages = languages.sort(() => .5 - Math.random());
   
-  var scores = randomizeLanguages.map(function(language){
+  
+  var scores = Object.keys(programmingLanguages).map(function(language){
     // get the intersection (with .filter()) of the answers list and the list for each programming language. Then obtain the length of that intersection. 
     var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
     //in theory not every question applies to every language so use percentages instead of total scores.
@@ -29,8 +28,34 @@ function assignAndOrderScores(answers){
     return b.score - a.score;
   });
   
-  return scores;
+  var highest = scores[0].score;
+  var highestScoresArray = scores.filter(function(score){
+    return score.score == highest;
+  });
+
+  //if there are multiple high scores then sort them, otherwise skip the
+  //sort method.
+  if (!(highestScoresArray.length > 1)){
+    return scores;
+  }
+  
+
+  var newArray = [];
+  while (highestScoresArray.length > 0){
+    var length = highestScoresArray.length;
+    
+    var number = Math.floor(Math.random() * length);
+      
+    newArray.push(highestScoresArray[number]);
+    highestScoresArray.splice(number,1);    
+  }
+  var spliced = scores.splice(0,newArray.length);
+  return newArray.concat(scores);
+
+  
+   
 }  
+
 
 
 

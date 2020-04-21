@@ -33,23 +33,26 @@ function assignAndOrderScores(answers){
     return score.score == highest;
   });
 
-  //if there are multiple high scores then sort them, otherwise skip the
-  //sort method.
+  //if there are aren't multiple same  high scores then there is no need to randomize them 
   if (!(highestScoresArray.length > 1)){
     return scores;
   }
   
-
+  //if there are multiple same highscores then they need to be randomized
   var newArray = [];
   while (highestScoresArray.length > 0){
-    var length = highestScoresArray.length;
-    
-    var number = Math.floor(Math.random() * length);
-      
+    var lengthOfHighestScoreArray = highestScoresArray.length;
+    //find a random number between 0 and the length of the high score sarray
+    var number = Math.floor(Math.random() * lengthOfHighestScoreArray);
+    //use that random number to select a random object from the highest score and then push that object into the scores array;
     newArray.push(highestScoresArray[number]);
-    highestScoresArray.splice(number,1);    
+    //remove the item that was pushed into the new array from the array of highest scores
+    highestScoresArray.splice(number,1);
+    //continue the process until the high scores array is empty    
   }
+  // remove the high scores from the original results array
   var spliced = scores.splice(0,newArray.length);
+  //replace the high scores by contating the original results to the new array
   return newArray.concat(scores);
 
   

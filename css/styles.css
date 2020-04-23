@@ -48,9 +48,7 @@ div.results-explainer{
   display:none;
   flex-direction: column;
   margin: 15px;
-  
   border: solid orange 1px;
-  
 }
 
 div.results-explainer img{
@@ -70,8 +68,7 @@ div.result-explainer-exit{
   right:0;
   top: 0;
   border: .5px black solid;
-  line-height: 9px;
-  
+  line-height: 9px;  
 }
 
 span {

@@ -11,9 +11,6 @@ var programmingLanguages =
 
 
 function assignAndOrderScores(answers){
-   
-  
-  
   var scores = Object.keys(programmingLanguages).map(function(language){
     // get the intersection (with .filter()) of the answers list and the list for each programming language. Then obtain the length of that intersection. 
     var length = programmingLanguages[language].flat().filter(function(item){ return answers.includes(item)}).length;
@@ -55,14 +52,8 @@ function assignAndOrderScores(answers){
   // remove the high scores from the original results array
   var spliced = scores.splice(0,randomizedHighScores.length);
   //replace the high scores by concatenating the original results to the new array
-  return randomizedHighScores.concat(scores);
-
-  
-   
+  return randomizedHighScores.concat(scores);   
 }  
-
-
-
 
 $(document).ready(function(){
   
